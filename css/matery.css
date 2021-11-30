@@ -1061,7 +1061,7 @@ article .article-tags .chip {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
-    color: #42b983;
+    color: #5698c3;
     background: #fff;
     border: 1px solid;
     transition: all 0.6s ease-in-out;
@@ -1069,17 +1069,17 @@ article .article-tags .chip {
 
 #artDetail .tag_share .article-tag .chip:hover {
     color: #fff;
-    background: #42b983;
+    background: #5698c3;
 }
 
 #artDetail .post-cate {
     float: right;
-    color: #42b983;
+    color: #5698c3;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #42b983;
+    color: #5698c3;
     font-weight: 500;
 }
 
@@ -1098,7 +1098,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #5698c3;
     text-decoration: underline;
 }
 
@@ -1161,7 +1161,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #42b983;
+    color: #5698c3;
     font-weight: 500;
 }
 
@@ -1177,7 +1177,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #42b983;
+    color: #5698c3;
     font-weight: 500;
     text-decoration: underline;
     word-wrap: break-word;
@@ -1632,8 +1632,8 @@ thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #142334;
-    background: radial-gradient(#4cbf30, #142334);
+    border: 1px solid #346c9c;
+    background: radial-gradient(#696969, #346c9c);
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1906,7 +1906,7 @@ footer .copy-right {
 }
 
 .top-scroll .btn-floating {
-    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%);
+    background: linear-gradient(to bottom right, #FF5E3A 0%, #495c69 100%);
     width: 48px;
     height: 48px;
 }
