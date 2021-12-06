@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 青铜_Bronze">
+    <meta name="keywords" content="Arduino室内定位器, 青铜_Bronze">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 青铜_Bronze</title>
+    <title>Arduino室内定位器 | 青铜_Bronze</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -181,12 +181,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Arduino室内定位器</h1>
                 </div>
             </div>
         </div>
@@ -302,23 +302,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BD%91%E9%A1%B5/">
-                                <span class="chip bg-color">网页</span>
+                            <a href="/tags/Arduino/">
+                                <span class="chip bg-color">Arduino</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                学习
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -327,28 +318,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-29
+                    2021-12-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-30
+                    2021-12-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -368,19 +359,45 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <p>一个通过识别WiFI信号名称与大小的<a target="_blank" rel="noopener" href="https://eloquentarduino.github.io/2020/08/the-ultimate-guide-to-wifi-indoor-positioning-using-arduino-and-machine-learning/">室内房间定位器</a>。<br>对原系统进行了一些改动。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>收集所在每个房间的数据，通过决策树算法学习，得到分类器</li>
+<li>再次实时输入数据时，将数据先转化为特征向量</li>
+<li>将此向量与分类器对比，得到最接近的分类结果</li>
+<li>将分类结果通过串口通信到UNO再由显示器输出（这一步对系统无实质性作用。因为想要练习软串口通信，就加上了：-））</li>
+</ul>
+<h3 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h3><ul>
+<li>Esp8266 Nodemcu</li>
+<li>Arduino UNO </li>
+<li><a target="_blank" rel="noopener" href="https://wiki.dfrobot.com.cn/_SKU_DFR0063_IIC_LCD1602_display_module_%E5%85%BC%E5%AE%B9Gadgeteer">I2C LCD1602</a> </li>
+<li>若干杜邦线</li>
+</ul>
+<h3 id="相关库"><a href="#相关库" class="headerlink" title="相关库"></a>相关库</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/esp8266/Arduino">ESP8266</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eloquentarduino/micromlgen">micromlgen</a> （能生成可在微控制器上跑的归类代码）</li>
+<li><a target="_blank" rel="noopener" href="https://www.dfrobot.com.cn/images/upload/File/DFR0063/20160512173921pe2bqz.zip">LiquidCrystal_I2C</a> (注意是RFRobot自己开发这个库,用于显示输出)</li>
+</ul>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><h4 id="步骤一：收集数据生成json格式文件"><a href="#步骤一：收集数据生成json格式文件" class="headerlink" title="步骤一：收集数据生成json格式文件"></a>步骤一：收集数据生成json格式文件</h4><p>这一步只需要nodemcu就可以完成了。将以下代码放入Arduino的草图里。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ESP8266WiFi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> print(string) Serial.print(string);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> quote(string) print(<span class="meta-string">&#x27;&quot;&#x27;</span>); print(string); print(<span class="meta-string">&#x27;&quot;&#x27;</span>);</span></span><br><span class="line">String location = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Serial.begin(<span class="number">115200</span>);</span><br><span class="line">  delay(<span class="number">3000</span>);</span><br><span class="line">  WiFi.disconnect();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  <span class="comment">// if location is set, scan networks</span></span><br><span class="line">  <span class="keyword">if</span> (location != <span class="string">&quot;&quot;</span>&amp;&amp;(!Serial.available())) &#123;</span><br><span class="line">    <span class="keyword">int</span> numNetworks = WiFi.scanNetworks();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print location</span></span><br><span class="line">    print(<span class="string">&#x27;&#123;&#x27;</span>);</span><br><span class="line">    quote(<span class="string">&quot;__location&quot;</span>);</span><br><span class="line">    print(<span class="string">&quot;: &quot;</span>);</span><br><span class="line">    quote(location);</span><br><span class="line">    print(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// print each network SSID and RSSI</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numNetworks; i++) &#123;</span><br><span class="line">      quote(WiFi.SSID(i));</span><br><span class="line">      print(<span class="string">&quot;: &quot;</span>);</span><br><span class="line">      print(WiFi.RSSI(i));</span><br><span class="line">      print(i == numNetworks - <span class="number">1</span> ? <span class="string">&quot;&#125;\n&quot;</span> : <span class="string">&quot;, &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line">    delay(<span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// else wait for user to enter the location</span></span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    String input;</span><br><span class="line">    </span><br><span class="line">    Serial.println(<span class="string">&quot;Enter &#x27;scan &#123;location&#125;&#x27; to start the scanning&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!Serial.available())</span><br><span class="line">      delay(<span class="number">200</span>);</span><br><span class="line">      </span><br><span class="line">    input = Serial.readStringUntil(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (input.indexOf(<span class="string">&quot;scan &quot;</span>) == <span class="number">0</span>) &#123;  <span class="comment">//第一次 出现scan的时候是在字符串的第零位</span></span><br><span class="line">      input.replace(<span class="string">&quot;scan &quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">      location = input;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      location = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在串口监测器里输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scan 【你想要的扫描的房间】//进行扫描，如 scan room或者 scan 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stop  //停止</span><br></pre></td></tr></table></figure>
+<p>这时串口监视器里会输出一些扫描到的数据（json格式）。在房间里走一走，等待一段时间后，可以进行下一个房间的扫描。最后，将数据整合放到一个json文件里。<br><img src="/medias/article/scan.PNG" alt="收集"></p>
+<h4 id="步骤二：在spyder中生成分类代码（Python）"><a href="#步骤二：在spyder中生成分类代码（Python）" class="headerlink" title="步骤二：在spyder中生成分类代码（Python）"></a>步骤二：在spyder中生成分类代码（Python）</h4><p>工具不限啦，只不过我用spyder比较多。<br>首先就是到cmd里安装库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install micromlgen</span><br></pre></td></tr></table></figure>
+<p><img src="/medias/article/version.JPG" alt="版本"><br>然后将刚才得到的数据放进去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> micromlgen <span class="keyword">import</span> port_wifi_indoor_positioning</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> micromlgen <span class="keyword">import</span> port_wifi_indoor_positioning, port</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    infile=<span class="string">&#x27;替换为刚刚得到的json文件的路径&#x27;</span></span><br><span class="line">    outfile_1=<span class="string">&#x27;替换为路径\\Converter.h&#x27;</span></span><br><span class="line">    outfile_2=<span class="string">&#x27;替换为路径\\Classifier.h&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(infile)<span class="keyword">as</span> filedata:</span><br><span class="line">       samples=filedata.read()</span><br><span class="line"></span><br><span class="line">    X, y, classmap, converter_code = port_wifi_indoor_positioning(samples)</span><br><span class="line">    clf = DecisionTreeClassifier()</span><br><span class="line">    clf.fit(X, y)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(outfile_1,<span class="string">&#x27;w&#x27;</span>)<span class="keyword">as</span> out_1:</span><br><span class="line">        out_1.write(converter_code)</span><br><span class="line">    <span class="built_in">print</span>(converter_code)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(outfile_2,<span class="string">&#x27;w&#x27;</span>)<span class="keyword">as</span> out_2:</span><br><span class="line">        out_2.write(port(clf, classmap=classmap))</span><br><span class="line"><span class="built_in">print</span>(port(clf, classmap=classmap))</span><br></pre></td></tr></table></figure>
+<p>代码运行完后，你能在交互框中看到生成出来的特征转换器（ features converter）和分类器（ classifier）。同时也会保存到刚刚的路径里。</p>
+<h4 id="步骤三：上传特征转化器与分类器，并划分软串口"><a href="#步骤三：上传特征转化器与分类器，并划分软串口" class="headerlink" title="步骤三：上传特征转化器与分类器，并划分软串口"></a>步骤三：上传特征转化器与分类器，并划分软串口</h4><p>将这四个文件放到一个文件夹中，然后将这个项目上传到nodemcu里。<br><img src="/medias/article/wenjian.png" alt="合并"><br>Test2.ino</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;WiFiIndoorPositioning.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>WiFiIndoorPosition.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;ESP8266WiFi.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Converter.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Classifier.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;SoftwareSerial.h&quot;</span></span></span><br><span class="line"><span class="function">SoftwareSerial <span class="title">ESP8</span><span class="params">(D2,D3)</span></span>;</span><br><span class="line"></span><br><span class="line">Eloquent::Projects::WifiIndoorPositioning positioning;</span><br><span class="line">Eloquent::ML::Port::DecisionTree classifier;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Serial.begin(<span class="number">115200</span>);</span><br><span class="line">  ESP8.begin(<span class="number">4800</span>);</span><br><span class="line">  pinMode(D2,INPUT);</span><br><span class="line">  pinMode(D3,OUTPUT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	positioning.scan();</span><br><span class="line">	<span class="comment">//Serial.print(&quot;You&#x27;re in &quot;);</span></span><br><span class="line">	<span class="comment">//Serial.println(classifier.predictLabel(positioning.features));</span></span><br><span class="line">  ESP8.print(classifier.predictLabel(positioning.features));</span><br><span class="line">  ESP8.print(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	delay(<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="步骤四：UNO作为主控板接收数据"><a href="#步骤四：UNO作为主控板接收数据" class="headerlink" title="步骤四：UNO作为主控板接收数据"></a>步骤四：UNO作为主控板接收数据</h4><p>这一步主要是使用软串口接收nodemcu传过来的分类结果。<br>nodemcu与UNO连线：<br>D3-&gt;D3<br>D2-&gt;D2<br>VIN-&gt;VCC<br>GND-&gt;GND<br><img src="/medias/article/DFR0063_Arduino_connection.png" alt="LCD与UNO的连线图"><br><img src="/medias/article/lianjietu.jpg" alt="加电池后总连线图"></p>
+<p>这个例子中，我之前收集时输入偷懒了，使用的’1,2,3’来代替房间。这里用switch给了个映射，使输出到屏幕上的是实际的房间号。可以自己根据实际情况修改。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;SoftwareSerial.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;LiquidCrystal_I2C.h&gt;</span></span></span><br><span class="line"><span class="function">SoftwareSerial <span class="title">ArduinoUno</span><span class="params">(<span class="number">3</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line"><span class="function">LiquidCrystal_I2C <span class="title">lcd</span><span class="params">(<span class="number">0x20</span>,<span class="number">16</span>,<span class="number">2</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span>&#123;</span><br><span class="line">  lcd.init();                 <span class="comment">// LCD初始化设置</span></span><br><span class="line">  lcd.backlight();           <span class="comment">// 打开LCD背光</span></span><br><span class="line">  Serial.begin(<span class="number">115200</span>);</span><br><span class="line">  ArduinoUno.begin(<span class="number">4800</span>);</span><br><span class="line">  lcd.print(<span class="string">&quot;You are in: &quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(ArduinoUno.available()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    Serial.println(<span class="string">&quot;ready&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> val=ArduinoUno.parseInt();</span><br><span class="line">    <span class="keyword">if</span>(ArduinoUno.read()==<span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">      Serial.println(val);</span><br><span class="line">      lcd.setCursor(<span class="number">6</span>,<span class="number">1</span>); </span><br><span class="line">      <span class="keyword">switch</span> (val)&#123;<span class="comment">//根据实际情况修改</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        lcd.print(<span class="string">&quot;304&quot;</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        lcd.print(<span class="string">&quot;207&quot;</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        lcd.print(<span class="string">&quot;311&quot;</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        lcd.print(<span class="string">&quot;outside&quot;</span>);<span class="keyword">break</span>;</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  delay(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h3><p>其实对于大一点的房间，还是比较精准的。稍微想把空间划分的小一点，就不行了。<br>同时WiFi定位虽然对于硬件的要求不高（因为信号源都不需要自己准备），但是也正因如此会有很大的不确定性。例如附近wifi源过少或者wifi更变等不确定因素会是装备无法运转。</p>
 
                 
             </div>
@@ -407,7 +424,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://BronzeJi.github.io/2021/11/29/hello-world/">http://BronzeJi.github.io/2021/11/29/hello-world/</a>
+                    <a href="http://BronzeJi.github.io/2021/12/06/Arduino%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F/">http://BronzeJi.github.io/2021/12/06/Arduino%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -445,8 +462,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BD%91%E9%A1%B5/">
-                                    <span class="chip bg-color">网页</span>
+                                <a href="/tags/Arduino/">
+                                    <span class="chip bg-color">Arduino</span>
                                 </a>
                             
                         </div>
@@ -662,9 +679,55 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/12/06/Arduino%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/2.jpg" class="responsive-img" alt="Arduino室内定位器">
+                        
+                        <span class="card-title">Arduino室内定位器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一个通过识别WiFI信号名称与大小的室内房间定位器。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            JiChenya
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Arduino/">
+                        <span class="chip bg-color">Arduino</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/11/30/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/">
                     <div class="card-image">
@@ -681,9 +744,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -691,56 +754,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/29/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%BD%91%E9%A1%B5/">
-                        <span class="chip bg-color">网页</span>
-                    </a>
-                    
                 </div>
                 
             </div>
