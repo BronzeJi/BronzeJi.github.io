@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="Chenya Ji">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://BronzeJi.github.io/2021/12/06/arduino室内定位系统/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Arduino室内定位器">
+    <meta property="og:description" content="Hexo Theme Redefine">
+    <meta property="og:url" content="http://BronzeJi.github.io2021/12/06/Arduino室内定位系统/">
+    <meta property="og:image" content="/images/logo.png">
+    <meta property="og:site_name" content="Bronze">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arduino室内定位器">
+    <meta name="twitter:description" content="Hexo Theme Redefine">
+    <meta name="twitter:image" content="/images/logo.png">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+    <meta name="theme-color" content="#005080">
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+    <title>
+        
+            Arduino室内定位器 -
+        
+        Bronze
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    
+    
+    
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"bronzeji.github.io","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.png","favicon":"/images/logo.png","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"/images/imagerepo/cool/bladerunner_2.jpeg","dark":"/images/imagerepo/cool/bladerunner_1.jpeg"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"Do not go gentle into that good night.","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.6","friend_links":{"columns":2},"home_article":{"date_format":"auto","category":{"enable":true,"limit":1},"tag":{"enable":true,"limit":3}},"plugins":{"aplayer":{"enable":false,"audio":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]}}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Bronze
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">Arduino室内定位器</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Chenya Ji</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2021-12-06 18:55:22</span>
+        <span class="mobile">2021-12-06 18:55</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-03-07 11:53</span>
+            <span class="mobile">2023-03-07 11:53</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Arduino/">Arduino</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p>一个通过识别WiFI信号名称与大小的<a class="link"   target="_blank" rel="noopener" href="https://eloquentarduino.github.io/2020/08/the-ultimate-guide-to-wifi-indoor-positioning-using-arduino-and-machine-learning/" >室内房间定位器 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>。<br>对原系统进行了一些改动。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>收集所在每个房间的数据，通过决策树算法学习，得到分类器</li>
+<li>再次实时输入数据时，将数据先转化为特征向量</li>
+<li>将此向量与分类器对比，得到最接近的分类结果</li>
+<li>将分类结果通过串口通信到UNO再由显示器输出（这一步对系统无实质性作用。因为想要练习软串口通信，就加上了：-））</li>
+</ul>
+<h3 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h3><ul>
+<li>Esp8266 Nodemcu</li>
+<li>Arduino UNO </li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://wiki.dfrobot.com.cn/_SKU_DFR0063_IIC_LCD1602_display_module_%E5%85%BC%E5%AE%B9Gadgeteer" >I2C LCD1602 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </li>
+<li>若干杜邦线</li>
+</ul>
+<h3 id="相关库"><a href="#相关库" class="headerlink" title="相关库"></a>相关库</h3><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/esp8266/Arduino" >ESP8266 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/eloquentarduino/micromlgen" >micromlgen <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> （能生成可在微控制器上跑的归类代码）</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.dfrobot.com.cn/images/upload/File/DFR0063/20160512173921pe2bqz.zip" >LiquidCrystal_I2C <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> (注意是RFRobot自己开发这个库,用于显示输出)</li>
+</ul>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><h4 id="步骤一：收集数据生成json格式文件"><a href="#步骤一：收集数据生成json格式文件" class="headerlink" title="步骤一：收集数据生成json格式文件"></a>步骤一：收集数据生成json格式文件</h4><p>这一步只需要nodemcu就可以完成了。将以下代码放入Arduino的草图里。</p>
+<pre><code class="cpp">#include &lt;ESP8266WiFi.h&gt;
+#define print(string) Serial.print(string);
+#define quote(string) print(&#39;&quot;&#39;); print(string); print(&#39;&quot;&#39;);
+String location = &quot;&quot;;
+void setup() &#123;
+  Serial.begin(115200);
+  delay(3000);
+  WiFi.disconnect();
+&#125;
+void loop() &#123;  
+  // if location is set, scan networks
+  if (location != &quot;&quot;&amp;&amp;(!Serial.available())) &#123;
+    int numNetworks = WiFi.scanNetworks();
+
+    // print location
+    print(&#39;&#123;&#39;);
+    quote(&quot;__location&quot;);
+    print(&quot;: &quot;);
+    quote(location);
+    print(&quot;, &quot;);
+  
+    // print each network SSID and RSSI
+    for (int i = 0; i &lt; numNetworks; i++) &#123;
+      quote(WiFi.SSID(i));
+      print(&quot;: &quot;);
+      print(WiFi.RSSI(i));
+      print(i == numNetworks - 1 ? &quot;&#125;\n&quot; : &quot;, &quot;);
+    &#125;
+      
+    delay(1000);
+  &#125;
+  // else wait for user to enter the location
+  else &#123;
+    String input;
+    
+    Serial.println(&quot;Enter &#39;scan &#123;location&#125;&#39; to start the scanning&quot;);
+
+    while (!Serial.available())
+      delay(200);
+      
+    input = Serial.readStringUntil(&#39;\n&#39;);
+
+    if (input.indexOf(&quot;scan &quot;) == 0) &#123;  //第一次 出现scan的时候是在字符串的第零位
+      input.replace(&quot;scan &quot;, &quot;&quot;);
+      location = input;
+    &#125;
+    else &#123;
+      location = &quot;&quot;;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>在串口监测器里输入</p>
+<pre><code>scan 【你想要的扫描的房间】//进行扫描，如 scan room或者 scan 1
+</code></pre>
+<pre><code>stop  //停止
+</code></pre>
+<p>这时串口监视器里会输出一些扫描到的数据（json格式）。在房间里走一走，等待一段时间后，可以进行下一个房间的扫描。最后，将数据整合放到一个json文件里。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/medias/article/scan.PNG"
+                      alt="收集"
+                ></p>
+<h4 id="步骤二：在spyder中生成分类代码（Python）"><a href="#步骤二：在spyder中生成分类代码（Python）" class="headerlink" title="步骤二：在spyder中生成分类代码（Python）"></a>步骤二：在spyder中生成分类代码（Python）</h4><p>工具不限啦，只不过我用spyder比较多。<br>首先就是到cmd里安装库。</p>
+<pre><code>pip install micromlgen
+</code></pre>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/medias/article/version.JPG"
+                      alt="版本"
+                ><br>然后将刚才得到的数据放进去</p>
+<pre><code class="python">from micromlgen import port_wifi_indoor_positioning
+from sklearn.tree import DecisionTreeClassifier
+from micromlgen import port_wifi_indoor_positioning, port
+
+if __name__ == &#39;__main__&#39;:
+    infile=&#39;替换为刚刚得到的json文件的路径&#39;
+    outfile_1=&#39;替换为路径\\Converter.h&#39;
+    outfile_2=&#39;替换为路径\\Classifier.h&#39;
+    with open(infile)as filedata:
+       samples=filedata.read()
+
+    X, y, classmap, converter_code = port_wifi_indoor_positioning(samples)
+    clf = DecisionTreeClassifier()
+    clf.fit(X, y)
+    
+    with open(outfile_1,&#39;w&#39;)as out_1:
+        out_1.write(converter_code)
+    print(converter_code)
+    with open(outfile_2,&#39;w&#39;)as out_2:
+        out_2.write(port(clf, classmap=classmap))
+print(port(clf, classmap=classmap))
+</code></pre>
+<p>代码运行完后，你能在交互框中看到生成出来的特征转换器（ features converter）和分类器（ classifier）。同时也会保存到刚刚的路径里。</p>
+<h4 id="步骤三：上传特征转化器与分类器，并划分软串口"><a href="#步骤三：上传特征转化器与分类器，并划分软串口" class="headerlink" title="步骤三：上传特征转化器与分类器，并划分软串口"></a>步骤三：上传特征转化器与分类器，并划分软串口</h4><p>将这四个文件放到一个文件夹中，然后将这个项目上传到nodemcu里。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/medias/article/wenjian.png"
+                      alt="合并"
+                ><br>Test2.ino</p>
+<pre><code class="cpp">#include &quot;WiFiIndoorPositioning.h&quot;
+</code></pre>
+<p>WiFiIndoorPosition.h</p>
+<pre><code class="cpp">#include &quot;ESP8266WiFi.h&quot;
+#include &quot;Converter.h&quot;
+#include &quot;Classifier.h&quot;
+#include &quot;SoftwareSerial.h&quot;
+SoftwareSerial ESP8(D2,D3);
+
+Eloquent::Projects::WifiIndoorPositioning positioning;
+Eloquent::ML::Port::DecisionTree classifier;
+
+void setup() &#123;
+Serial.begin(115200);
+  ESP8.begin(4800);
+  pinMode(D2,INPUT);
+  pinMode(D3,OUTPUT);
+&#125;
+
+void loop() &#123;
+    positioning.scan();
+    //Serial.print(&quot;You&#39;re in &quot;);
+    //Serial.println(classifier.predictLabel(positioning.features));
+  ESP8.print(classifier.predictLabel(positioning.features));
+  ESP8.print(&quot;\n&quot;);
+    delay(1000);
+&#125;
+</code></pre>
+<h4 id="步骤四：UNO作为主控板接收数据"><a href="#步骤四：UNO作为主控板接收数据" class="headerlink" title="步骤四：UNO作为主控板接收数据"></a>步骤四：UNO作为主控板接收数据</h4><p>这一步主要是使用软串口接收nodemcu传过来的分类结果。<br>nodemcu与UNO连线：<br>D3-&gt;D3<br>D2-&gt;D2<br>VIN-&gt;VCC<br>GND-&gt;GND<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/medias/article/DFR0063_Arduino_connection.png"
+                      alt="LCD与UNO的连线图"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/medias/article/lianjietu.jpg"
+                      alt="加电池后总连线图"
+                ></p>
+<p>这个例子中，我之前收集时输入偷懒了，使用的’1,2,3’来代替房间。这里用switch给了个映射，使输出到屏幕上的是实际的房间号。可以自己根据实际情况修改。</p>
+<pre><code class="cpp">#include &lt;SoftwareSerial.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+SoftwareSerial ArduinoUno(3,2);
+LiquidCrystal_I2C lcd(0x20,16,2); 
+
+void setup()&#123;
+  lcd.init();                 // LCD初始化设置
+  lcd.backlight();           // 打开LCD背光
+  Serial.begin(115200);
+  ArduinoUno.begin(4800);
+  lcd.print(&quot;You are in: &quot;);
+&#125;
+
+void loop()&#123;
+  while(ArduinoUno.available()&gt;0)&#123;
+    Serial.println(&quot;ready&quot;);
+    int val=ArduinoUno.parseInt();
+    if(ArduinoUno.read()==&#39;\n&#39;)&#123;
+      Serial.println(val);
+      lcd.setCursor(6,1); 
+      switch (val)&#123;//根据实际情况修改
+        case 1:
+        lcd.print(&quot;304&quot;);break;
+        case 2:
+        lcd.print(&quot;207&quot;);break;
+        case 3:
+        lcd.print(&quot;311&quot;);break;
+        default:
+        lcd.print(&quot;outside&quot;);break;
+      &#125; 
+    &#125;
+  &#125;
+  delay(100);
+&#125;
+</code></pre>
+<h3 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h3><p>其实对于大一点的房间，还是比较精准的。稍微想把空间划分的小一点，就不行了。<br>同时WiFi定位虽然对于硬件的要求不高（因为信号源都不需要自己准备），但是也正因如此会有很大的不确定性。例如附近wifi源过少或者wifi更变等不确定因素会使装备无法运转。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Arduino室内定位器</li>
+        <li>Post author：Chenya Ji</li>
+        <li>Create time：2021-12-06 18:55:22</li>
+        <li>
+            Post link：https://bronzeji.github.io/2021/12/06/Arduino室内定位系统/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Arduino/">#Arduino</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/03/07/hello-world/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Hello World</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2021/11/30/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">你好，世界</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Arduino室内定位器</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87"><span class="nav-text">硬件准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-text">相关库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E6%94%B6%E9%9B%86%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90json%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="nav-text">步骤一：收集数据生成json格式文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%9C%A8spyder%E4%B8%AD%E7%94%9F%E6%88%90%E5%88%86%E7%B1%BB%E4%BB%A3%E7%A0%81%EF%BC%88Python%EF%BC%89"><span class="nav-text">步骤二：在spyder中生成分类代码（Python）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E4%B8%8A%E4%BC%A0%E7%89%B9%E5%BE%81%E8%BD%AC%E5%8C%96%E5%99%A8%E4%B8%8E%E5%88%86%E7%B1%BB%E5%99%A8%EF%BC%8C%E5%B9%B6%E5%88%92%E5%88%86%E8%BD%AF%E4%B8%B2%E5%8F%A3"><span class="nav-text">步骤三：上传特征转化器与分类器，并划分软串口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9AUNO%E4%BD%9C%E4%B8%BA%E4%B8%BB%E6%8E%A7%E6%9D%BF%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE"><span class="nav-text">步骤四：UNO作为主控板接收数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E6%9C%9B"><span class="nav-text">展望</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">Chenya Ji</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br> 
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.6</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/menu-shrink.js"></script>
+
+<script src="/js/tools/go-top-bottom.js"></script>
+
+<script src="/js/tools/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/tools/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/tools/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
