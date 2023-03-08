@@ -6204,19 +6204,19 @@ pre .deletion {
 }
 @media (prefers-color-scheme: light) {
   .first-screen-container {
-    background: url("https://raw.githubusercontent.com/BronzeJi/BronzeJi.github.io/main/images/imagerepo/cool/bladerunner_2.jpeg") center center/cover no-repeat !important;
+    background: url("/images/bladerunner2.webp") center center/cover no-repeat !important;
   }
 }
 @media (prefers-color-scheme: dark) {
   .first-screen-container {
-    background: url("/images/imagerepo/cool/bladerunner_1.webp") center center/cover no-repeat !important;
+    background: url("/images/bladerunner1.webp") center center/cover no-repeat !important;
   }
 }
 .light-mode .first-screen-container {
-  background: url("https://raw.githubusercontent.com/BronzeJi/BronzeJi.github.io/main/images/imagerepo/cool/bladerunner_2.jpeg") center center/cover no-repeat !important;
+  background: url("/images/bladerunner2.webp") center center/cover no-repeat !important;
 }
 .dark-mode .first-screen-container {
-  background: url("/images/imagerepo/cool/bladerunner_1.webp") center center/cover no-repeat !important;
+  background: url("/images/bladerunner1.webp") center center/cover no-repeat !important;
 }
 .image-viewer-container {
   position: fixed;
