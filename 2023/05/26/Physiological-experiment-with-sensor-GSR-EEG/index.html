@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://BronzeJi.github.io/2021/11/30/你好，世界/"/>
+    <link rel="canonical" href="http://BronzeJi.github.io/2023/05/26/physiological-experiment-with-sensor-gsr-eeg/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="你好，世界">
+    <meta property="og:title" content="Physiological experiment with sensor(GSR, EEG)">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://BronzeJi.github.io2021/11/30/你好，世界/">
+    <meta property="og:url" content="http://BronzeJi.github.io2023/05/26/Physiological-experiment-with-sensor-GSR-EEG/">
     <meta property="og:image" content="/images/logo.png">
     <meta property="og:site_name" content="Bronze">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="你好，世界">
+    <meta name="twitter:title" content="Physiological experiment with sensor(GSR, EEG)">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/logo.png">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            你好，世界 -
+            Physiological experiment with sensor(GSR, EEG) -
         
         Bronze
     </title>
@@ -269,7 +269,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">你好，世界</h1>
+                    <h1 class="article-title-regular">Physiological experiment with sensor(GSR, EEG)</h1>
                 </div>
             
                 
@@ -291,15 +291,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2021-11-30 14:30:21</span>
-        <span class="mobile">2021-11-30 14:30</span>
+        <span class="pc">2023-05-26 19:47:01</span>
+        <span class="mobile">2023-05-26 19:47</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="pc">2023-03-07 11:53</span>
-            <span class="mobile">2023-03-07 11:53</span>
+            <span class="pc">2023-05-26 21:19</span>
+            <span class="mobile">2023-05-26 21</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -319,8 +319,194 @@
             
 
             <div class="article-content markdown-body">
-                <p>今天是二零二一年十一月的最后一天。<br>很久之前就想写个博客了。拖延了好久。直到前段时间看到一个做网安的老哥的博客太酷了，所以，here we are~ 把模板的风格重新粉饰了一遍，以航空航天为基调，大部分都是黑蓝黑蓝的，希望以后有时间能找到一些细节的东西再改一改。</p>
-<p>目前的想法是会更新一些项目的复刻以及学习的论文，之后也许会放一些自己的项目上来，希望各位玩的开心。</p>
+                <p>The design below is intended for the investigation of how physiology correlates with music genres. It can also be applied in many other studies.</p>
+<p>The overall design is as follows:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/pic/Screenshot%202023-05-26%20at%2018.55.40.png?raw=true"
+                     
+                ></p>
+<h2 id="Equipment"><a href="#Equipment" class="headerlink" title="Equipment"></a>Equipment</h2><h3 id="Computer-system"><a href="#Computer-system" class="headerlink" title="Computer system"></a>Computer system</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.linuxliteos.com/" >Linux Lite <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Galvanic-skin-response-sensor"><a href="#Galvanic-skin-response-sensor" class="headerlink" title="Galvanic skin response sensor"></a>Galvanic skin response sensor</h3><p><a class="link"   target="_blank" rel="noopener" href="https://wiki.seeedstudio.com/Grove-GSR_Sensor/" >Groove-GSR sensor <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> gives the human resistance change. By detecting how skin conductivity changes, it can spot the emotion change. I connected it with an Arduino mini board(A2-&gt;SIG, GND-&gt;GND, 5v-&gt;VCC).<br>Open Arduino IDE, select the right board, and upload the following code:</p>
+<pre><code class="C++"> const int GSR=A2;
+ int sensorValue=0;
+ int gsr_average=0;
+
+
+//This allows you to print the message in a selfdefined port, which allows more flexibility in main control. on my computer, i just used the default &quot;/dev/ttyUSB0&quot;
+
+//port = &quot;/dev/ttyUSB0&quot;  
+//baudrate = 9600  
+
+ser = serial.Serial(port, baudrate)
+
+
+void setup() &#123;
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  // print current time
+  //Serial.print(&quot;Start from Arduino!&quot;);
+  //Serial.println();
+&#125;
+
+void loop() &#123;
+  // put your main code here, to run repeatedly:
+  long sum=0;
+  for(int i=0;i&lt;10;i++)&#123;
+    sensorValue=analogRead(GSR);
+    sum += sensorValue;
+    delay(5);
+  &#125;
+  gsr_average= sum/10;
+  Serial.println(gsr_average);
+&#125;
+</code></pre>
+<p>Congrats! You now can monitor the data from the serial port and save the data flow in python:</p>
+<pre><code class="python">def read_GSR(ser, name):
+    try:
+        global stop
+        while not stop:
+            #while True:
+            if ser.in_waiting &gt; 0:
+                with open(name + &#39;.txt&#39;, &#39;a&#39;) as file:
+                    data = ser.readline().decode().strip()
+                    file.write(data + &#39;\n&#39;)
+        print(&quot;GSR file is saved&quot;)
+    except Exception as e:
+        # Handle the exception here or print a custom error message
+        print(&quot;An error occurred while reading GSR:&quot;, str(e))
+</code></pre>
+<h3 id="EEG-sensor"><a href="#EEG-sensor" class="headerlink" title="EEG sensor"></a>EEG sensor</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/uzqh1u/as1hc8/dlvi0b" >TGAM module <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>Because it is connected to a Bluetooth module, I had a hard time installing the Bluetooth driver on Linux. However, it can be connected by simply using the password of “0000”. And then if one wants to monitor the wave using the provided serial debugging assistant, one needs to transfer the data from <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#RFCOMM" >vitural serial port <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>(RFCOMM 0) to a normal serial port(COM 33):</p>
+<pre><code>sudo ln -s /dev/rfcomm0 /dev/ttyS32
+</code></pre>
+<p>If the monitor is not only of interest, one should process the data by oneself. In this case, it is not necessary to transfer:</p>
+<pre><code class="python">def read_EEG(ser, name):
+    try:
+        global stop
+        while not stop:
+            #while True:
+            if ser.in_waiting &gt; 0:
+                with open(name + &#39;.txt&#39;, &#39;a&#39;) as file:
+                    data = ser.readline().strip()
+                    file.write(data.hex() + &#39;\n&#39;)  
+        print(&quot;EEG file is saved&quot;)  
+
+    except Exception as e:
+        # Handle the exception here or print a custom error message
+        print(&quot;An error occurred while reading EEG:&quot;, str(e))
+</code></pre>
+<h2 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h2><p>Participants were asked to put on a headphone which connected to the computer. After putting the name and emotions in the terminal, music will be played and the data from sensors will be stored automatically. Except for the pulse oximeter, data from the other two can be fetched through a computer. As a result, three threads are running during the experiment to play the <a class="link"   target="_blank" rel="noopener" href="https://open.spotify.com/playlist/6kql8V9DNXWydTiKjZfdEU?si=d463bcbec95b402b&nd=1" >music <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>, fetch data from GSR sensor and EEG sensor.</p>
+<pre><code class="python">def main():
+
+    
+    input(Fore.GREEN+&quot;------W E L C O M E ! ! !------\n (Press enter to continue.)\n (If you feel uncomfortable, you can quit anytime by pressing Ctrl+C)&quot;)
+    personCode = input(Style.RESET_ALL+&quot;Type your code here (the one used in the survey): &quot;)
+    emotion = input(&quot;How do you feel today: &quot;)
+    command = input(&quot;Are you ready? Lets play music !\n(Press enter to continue.)&quot;)
+
+    port1 = &#39;/dev/ttyUSB0&#39;  # Replace with the actual port for device 1
+    port2 = &#39;/dev/rfcomm0&#39;  # Replace with the actual port for device 2
+
+    baud_rate_1 = 9600  # Replace with the appropriate baud rate
+    baud_rate_2 = 9600
+    serial_port1 = serial.Serial(port1, baud_rate_1)
+    serial_port2 = serial.Serial(port2, baud_rate_2)
+
+    name = [personCode+&quot;_GSR&quot;, personCode + &quot;_EEG&quot;]
+
+    start_file(name[0])
+    start_file(name[1])
+
+    thread1 = threading.Thread(target=read_GSR, args=(serial_port1, name[0]))
+    thread2 = threading.Thread(target=read_EEG, args=(serial_port2, name[1]))
+    thread3 = threading.Thread(target=play_music, args=(&quot;music.mp3&quot;, name))
+
+    thread3.start()
+    thread1.start()
+    thread2.start()
+    
+    thread1.join();
+    thread2.join();
+    comment=input(&quot;Comments? &quot;)
+    print(&quot;Have a lovely day!&quot;)  
+    with open (&quot;info.txt&quot;,&quot;a&quot;)as file:
+        file.write(personCode+&#39;:&#39;+emotion+comment+&#39;\n&#39;);
+    
+    plotGSR(personCode);
+
+if __name__ == &#39;__main__&#39;:
+    main()
+</code></pre>
+<p>The whole file can be found <a class="link"   target="_blank" rel="noopener" href="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/physical%20test/experiment/control%20code/getGSREEG_520.py" >here <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/pic/Screenshot_2023-05-26_09-19-21.png?raw=true"
+                      alt="The interface"
+                ></p>
+<h2 id="Data-process"><a href="#Data-process" class="headerlink" title="Data process"></a>Data process</h2><h3 id="GSR"><a href="#GSR" class="headerlink" title="GSR"></a>GSR</h3><p>Plot the GSR sensor value while marking the start point of each song.</p>
+<pre><code class="python">def plotGSR(fileID):
+    with open(fileID+&#39;_GSR.txt&#39;, &#39;r&#39;) as file:
+        # Read the contents of the file
+        contents = file.read()
+        
+        num_tem = re.findall(r&#39;\d+&#39;, contents)
+        
+        # Convert the extracted numbers to integers
+        num_list = [int(num) for num in num_tem]
+        
+        end_index= num_list[12:].index(2023)+12 #the last dataindex 
+        
+        X= [num for num in range(0, len(num_list[12:end_index]))]
+        
+        plt.plot(X,num_list[12:end_index],color=&quot;black&quot;, linewidth=2.0)
+        
+        
+        ddot=len(X)/981
+        ticks=[]
+        label = list(range(1, 13))
+        for i in range(10,900,80):#12 songs begin time
+            ticks.append(i*ddot)
+            
+        plt.xticks(ticks,label)
+        plt.grid(True)
+        
+        plt.savefig(fileID+&#39;_GSR.svg&#39;,dpi=300,format=&quot;svg&quot;);
+        
+        plt.show();
+</code></pre>
+<h3 id="EEG"><a href="#EEG" class="headerlink" title="EEG"></a>EEG</h3><pre><code class="python">from dealEEG import get_EEG,plot_EEG,plot_EEG_heatmap,plot_EEG_aver
+
+name=[&#39;ca12&#39;,&#39;CH12&#39;,&#39;AG23&#39;,&#39;&#39;];
+
+
+
+for i in range(len(name)):
+    data=get_EEG(name[i]);
+    
+    plot_1=plot_EEG(data,name[i]);
+    
+    plot_2=plot_EEG_heatmap(data,name[i]);
+    
+    plot_3=plot_EEG_aver(data,name[i]);
+</code></pre>
+<p>where get_EEG(name) returns the EEG data in a dictionary structure. Variables available are meditation level, attention level, brain wave and noise level. plot_EEG(data,name) plots attention, meditation and signal quality,plot_EEG_heatmap(data,name) plot the heat map of brain waves. plot_EEG_aver(data, name) gives the average value of the signal during one song.<br>Welcome to use the <a class="link"   target="_blank" rel="noopener" href="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/physical%20test/EEG/deal_script/dealEEG.py" >file <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/BronzeJi/Music_personality_psychoreaction/9aca9c00535e5951b04d1b069c27f18d91da4bfa/physical%20test/EEG/figure/AG23_heatmap.svg"
+                      alt="Example of the heatmap"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/BronzeJi/Music_personality_psychoreaction/9aca9c00535e5951b04d1b069c27f18d91da4bfa/physical%20test/EEG/figure/ca12_signal.svg"
+                      alt="Example of the eSense value"
+                ></p>
+<!--![Example of the average and standard deviation](https://raw.githubusercontent.com/BronzeJi/Music_personality_psychoreaction/9aca9c00535e5951b04d1b069c27f18d91da4bfa/physical%20test/EEG/figure/ca12_average.svg)-->
+
+
+<p>After that, <a class="link"   target="_blank" rel="noopener" href="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/physical%20test/EEG/deal_script/corre.py" >import data from the survey and investigate the correlation between the emotional and physiological reactions <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>TO DO ;-)</p>
 
             </div>
 
@@ -328,11 +514,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：你好，世界</li>
+        <li>Post title：Physiological experiment with sensor(GSR, EEG)</li>
         <li>Post author：Chenya Ji</li>
-        <li>Create time：2021-11-30 14:30:21</li>
+        <li>Create time：2023-05-26 19:47:01</li>
         <li>
-            Post link：https://bronzeji.github.io/2021/11/30/你好，世界/
+            Post link：https://bronzeji.github.io/2023/05/26/Physiological-experiment-with-sensor-GSR-EEG/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -350,21 +536,21 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2021/12/06/Arduino%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F/"
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/03/07/hello-again/"
                             >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Arduino室内定位器</span>
-                                    <span class="post-nav-item">Prev posts</span>
+                                    <span class="post-nav-title-item">Hello again</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
                                 </span>
                             </a>
                         </div>
-                    
                     
                 </div>
             
@@ -395,8 +581,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">你好，世界</div>
-        
+        <div class="page-title">Physiological experiment with sensor(GSR, EEG)</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Equipment"><span class="nav-text">Equipment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Computer-system"><span class="nav-text">Computer system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Galvanic-skin-response-sensor"><span class="nav-text">Galvanic skin response sensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EEG-sensor"><span class="nav-text">EEG sensor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interface"><span class="nav-text">Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-process"><span class="nav-text">Data process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GSR"><span class="nav-text">GSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EEG"><span class="nav-text">EEG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li></ol>
 
     </div>
 </div>
