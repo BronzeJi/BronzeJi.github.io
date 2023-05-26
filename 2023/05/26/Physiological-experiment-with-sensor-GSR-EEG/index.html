@@ -298,8 +298,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="pc">2023-05-26 21:19</span>
-            <span class="mobile">2023-05-26 21</span>
+            <span class="pc">2023-05-26 21:09:36</span>
+            <span class="mobile">2023-05-26 21:09</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -327,7 +327,12 @@
                      
                 ></p>
 <h2 id="Equipment"><a href="#Equipment" class="headerlink" title="Equipment"></a>Equipment</h2><h3 id="Computer-system"><a href="#Computer-system" class="headerlink" title="Computer system"></a>Computer system</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.linuxliteos.com/" >Linux Lite <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Galvanic-skin-response-sensor"><a href="#Galvanic-skin-response-sensor" class="headerlink" title="Galvanic skin response sensor"></a>Galvanic skin response sensor</h3><p><a class="link"   target="_blank" rel="noopener" href="https://wiki.seeedstudio.com/Grove-GSR_Sensor/" >Groove-GSR sensor <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> gives the human resistance change. By detecting how skin conductivity changes, it can spot the emotion change. I connected it with an Arduino mini board(A2-&gt;SIG, GND-&gt;GND, 5v-&gt;VCC).<br>Open Arduino IDE, select the right board, and upload the following code:</p>
+<h3 id="Galvanic-skin-response-sensor"><a href="#Galvanic-skin-response-sensor" class="headerlink" title="Galvanic skin response sensor"></a>Galvanic skin response sensor</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/pic/Picture%201.png/Picture%201.png-1.png?raw=true"
+                      alt="GSR"
+                ><br><a class="link"   target="_blank" rel="noopener" href="https://wiki.seeedstudio.com/Grove-GSR_Sensor/" >Groove-GSR sensor <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> gives the human resistance change. By detecting how skin conductivity changes, it can spot the emotion change. I connected it with an Arduino mini board(A2-&gt;SIG, GND-&gt;GND, 5v-&gt;VCC).<br>Open Arduino IDE, select the right board, and upload the following code:</p>
 <pre><code class="C++"> const int GSR=A2;
  int sensorValue=0;
  int gsr_average=0;
@@ -376,10 +381,15 @@ void loop() &#123;
         # Handle the exception here or print a custom error message
         print(&quot;An error occurred while reading GSR:&quot;, str(e))
 </code></pre>
-<h3 id="EEG-sensor"><a href="#EEG-sensor" class="headerlink" title="EEG sensor"></a>EEG sensor</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/uzqh1u/as1hc8/dlvi0b" >TGAM module <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>Because it is connected to a Bluetooth module, I had a hard time installing the Bluetooth driver on Linux. However, it can be connected by simply using the password of “0000”. And then if one wants to monitor the wave using the provided serial debugging assistant, one needs to transfer the data from <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#RFCOMM" >vitural serial port <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>(RFCOMM 0) to a normal serial port(COM 33):</p>
+<h3 id="EEG-sensor"><a href="#EEG-sensor" class="headerlink" title="EEG sensor"></a>EEG sensor</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/BronzeJi/Music_personality_psychoreaction/blob/main/pic/Picture%201.png/Picture%201.png-2.png?raw=true"
+                      alt="EEG"
+                ><br><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/uzqh1u/as1hc8/dlvi0b" >TGAM module <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>Because it is connected to a Bluetooth module, I had a hard time installing the Bluetooth driver on Linux. However, it can be connected by simply using the password of “0000”. And then if one wants to monitor the wave using the provided serial debugging assistant, one needs to transfer the data from <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#RFCOMM" >vitural serial port <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>(RFCOMM 0) to a normal serial port(COM 33):</p>
 <pre><code>sudo ln -s /dev/rfcomm0 /dev/ttyS32
 </code></pre>
-<p>If the monitor is not only of interest, one should process the data by oneself. In this case, it is not necessary to transfer:</p>
+<p>If the monitor is not only of interest, one should process the data by oneself. In this case, it is not necessary to transfer, python can read from rfcomm port directly:</p>
 <pre><code class="python">def read_EEG(ser, name):
     try:
         global stop
